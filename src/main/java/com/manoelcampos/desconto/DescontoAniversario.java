@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DescontoAniversario implements Desconto {
     private static Double descontoAniversario(LocalDate dataAniversario) {
-        return dataAniversario.isEqual(LocalDate.now()) ? descontoAniversario : 0.0;
+        return dataAniversario.isEqual(LocalDate.now()) ? descontoAniversario : descontoPadrao;
     }
 
     @Override

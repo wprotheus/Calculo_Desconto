@@ -9,9 +9,9 @@ public class App {
         Cliente c2 = new Cliente(2, "Maria", LocalDate.of(2004, 5, 2));
         Cliente c3 = new Cliente(3, "Ana", LocalDate.of(1999, 8, 15));
 
-        Venda v1 = new Venda(1, c1, LocalDate.now(), 1000.0);
-        Venda v2 = new Venda(2, c2, LocalDate.now(), 100.0);
-        Venda v3 = new Venda(3, c3, LocalDate.now(), 240.0);
+        Venda v1 = new Venda(1, c1, LocalDate.now(), 500.0);
+        Venda v2 = new Venda(2, c2, LocalDate.now(), 400.0);
+        Venda v3 = new Venda(3, c3, LocalDate.now(), 480.0);
 
         DescontoAniversario descontoAniversario = new DescontoAniversario();
         DescontoPadrao descontoPadrao = new DescontoPadrao();

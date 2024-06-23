@@ -9,9 +9,8 @@ public class DescontoPadrao implements Desconto{
 
     @Override
     public List<Venda> vendaComDesconto(Venda fazerVenda) {
-        double desconto = descontoPadrao(fazerVenda.getValorTotal());
-        fazerVenda.setDesconto(desconto);
-        fazerVenda.setValorPagar(fazerVenda.getValorTotal() - desconto);
+        fazerVenda.setDesconto(descontoPadrao(fazerVenda.getValorTotal()));
+        fazerVenda.setValorPagar(fazerVenda.getValorTotal() - fazerVenda.getDesconto());
         return List.of(fazerVenda);
     }
 }
