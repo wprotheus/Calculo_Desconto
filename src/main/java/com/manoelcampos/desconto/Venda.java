@@ -2,7 +2,6 @@ package com.manoelcampos.desconto;
 
 import lombok.Data;
 
-import javax.swing.text.NumberFormatter;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.Locale;

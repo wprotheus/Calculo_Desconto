@@ -1,18 +1,18 @@
 package com.manoelcampos.desconto;
 
-import java.time.LocalDate;
-import java.util.List;
+public class DescontoAniversario extends VendaMetodo implements Desconto {
+    private Venda venda;
 
-public class DescontoAniversario implements Desconto {
-    private static Double descontoAniversario(LocalDate dataAniversario) {
-        return dataAniversario.isEqual(LocalDate.now()) ? descontoAniversario : descontoPadrao;
+   public DescontoAniversario(Venda venda) {
+        super(venda);
+        this.venda = venda;
     }
 
     @Override
-    public List<Venda> vendaComDesconto(Venda fazerVenda) {
-        double desconto = descontoAniversario(fazerVenda.getCliente().getDataNascimento());
-        fazerVenda.setDesconto(fazerVenda.getValorTotal() * desconto);
-        fazerVenda.setValorPagar(fazerVenda.getValorTotal() - fazerVenda.getDesconto());
-        return List.of(fazerVenda);
+    public Venda vendaComDesconto() {
+        double desconto = venda.getCliente().isAniversario() ? descontoAniversario : descontoPadrao;
+        venda.setDesconto(venda.getValorTotal() * desconto);
+        venda.setValorPagar(venda.getValorTotal() - venda.getDesconto());
+        return venda;
     }
 }

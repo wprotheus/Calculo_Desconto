@@ -1,16 +1,21 @@
 package com.manoelcampos.desconto;
 
-import java.util.List;
+public class DescontoPadrao extends VendaMetodo implements Desconto {
+    private Venda venda;
+    
+    public DescontoPadrao(Venda venda) {
+        super(venda);
+        this.venda = venda;
+    }
 
-public class DescontoPadrao implements Desconto{
     private static double descontoPadrao(double valorCompra) {
         return valorCompra * descontoPadrao;
     }
 
     @Override
-    public List<Venda> vendaComDesconto(Venda fazerVenda) {
-        fazerVenda.setDesconto(descontoPadrao(fazerVenda.getValorTotal()));
-        fazerVenda.setValorPagar(fazerVenda.getValorTotal() - fazerVenda.getDesconto());
-        return List.of(fazerVenda);
+    public Venda vendaComDesconto() {
+        venda.setDesconto(descontoPadrao(venda.getValorTotal()));
+        venda.setValorPagar(venda.getValorTotal() - venda.getDesconto());
+        return venda;
     }
 }

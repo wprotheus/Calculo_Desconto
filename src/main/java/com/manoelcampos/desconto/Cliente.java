@@ -25,6 +25,11 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
+    public  boolean isAniversario() {
+        return dataNascimento.getDayOfMonth() == LocalDate.now().getDayOfMonth()
+                && dataNascimento.getMonth() == LocalDate.now().getMonth();
+    }
+
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
