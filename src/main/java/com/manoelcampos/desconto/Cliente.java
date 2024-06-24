@@ -25,7 +25,7 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public  boolean isAniversario() {
+    boolean isAniversario() {
         return dataNascimento.getDayOfMonth() == LocalDate.now().getDayOfMonth()
                 && dataNascimento.getMonth() == LocalDate.now().getMonth();
     }

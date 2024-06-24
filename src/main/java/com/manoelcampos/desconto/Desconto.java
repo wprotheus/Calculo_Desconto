@@ -5,5 +5,5 @@ public interface Desconto {
     double descontoAniversario = 0.15;
     double descontoProgressivo = 0.20;
 
-    Venda vendaComDesconto();
+    Venda percentualDesconto();
 }
