@@ -35,20 +35,20 @@ public class Venda {
 
     void descontoPadraoCompra(double valorCompra) {
         double desconto = Desconto.descontoPadrao;
-        tipoDesconto("padrao");
+        tipoDesconto((desconto * 100) + " %");
         valorDesconto(valorCompra, desconto);
     }
 
     void descontoAniversarioClienteCompra(double valorCompra, boolean aniversario) {
         double desconto = aniversario ? Desconto.descontoAniversario : Desconto.descontoPadrao;
-        tipoDesconto("aniversario");
+        tipoDesconto((desconto * 100) + " %");
         valorDesconto(valorCompra, desconto);
     }
 
     void descontoProgressivoCompra(double valorCompra) {
         double percentual = percentualDesconto(valorCompra);
         double desconto = descontoPercentual(percentual);
-        tipoDesconto(String.valueOf(desconto * 100));
+        tipoDesconto(String.format("%.2f", (desconto * 100)) + " %");
         valorDesconto(valorCompra, desconto);
     }
 
@@ -67,28 +67,14 @@ public class Venda {
     @Override
     public String toString() {
         NumberFormat real = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
-        String formaDesconto = getFormaDesconto();
-        return new StringBuilder("Venda-ID: ").append(id)
-                .append("\n")
-                .append(cliente).append("\n")
-                .append("Valor Total: ").append(real.format(valorTotal))
-                .append("\n").append("Descontos: ")
-                .append(formaDesconto).append("\n")
-                .append("Valor a pagar: ")
-                .append(real.format(valorPagar))
-                .append("\n").toString();
-    }
-
-    private String getFormaDesconto() {
-        String formaDesconto;
-        if (tipoDesconto.equals("aniversario"))
-            formaDesconto = "15 %";
-        else if (tipoDesconto.equals("padrao"))
-            formaDesconto = "8 %";
-        else if (tipoDesconto.equals("0.2"))
-            formaDesconto = "20 %";
-        else
-            formaDesconto = tipoDesconto + " %";
-        return formaDesconto;
+        return "Venda-ID: " + id +
+                "\n" +
+                cliente + "\n" +
+                "Valor Total: " + real.format(valorTotal) +
+                "\n" + "Descontos: " +
+                tipoDesconto + "\n" +
+                "Valor a pagar: " +
+                real.format(valorPagar) +
+                "\n";
     }
 }
