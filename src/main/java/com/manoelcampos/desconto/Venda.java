@@ -29,39 +29,8 @@ public class Venda {
         this.valorTotal = valorTotal;
     }
 
-    private static double percentualDesconto(double valorCompra) {
-        return (valorCompra * 0.04) / 100;
-    }
-
-    void descontoPadraoCompra(double valorCompra) {
-        double desconto = Desconto.descontoPadrao;
-        tipoDesconto((desconto * 100) + " %");
-        valorDesconto(valorCompra, desconto);
-    }
-
-    void descontoAniversarioClienteCompra(double valorCompra, boolean aniversario) {
-        double desconto = aniversario ? Desconto.descontoAniversario : Desconto.descontoPadrao;
-        tipoDesconto((desconto * 100) + " %");
-        valorDesconto(valorCompra, desconto);
-    }
-
-    void descontoProgressivoCompra(double valorCompra) {
-        double percentual = percentualDesconto(valorCompra);
-        double desconto = descontoPercentual(percentual);
-        tipoDesconto(String.format("%.2f", (desconto * 100)) + " %");
-        valorDesconto(valorCompra, desconto);
-    }
-
-    private void valorDesconto(double valorCompra, double desconto) {
+    void valorCompraComDesconto(double valorCompra, double desconto) {
         this.valorPagar = valorCompra - (valorCompra * desconto);
-    }
-
-    private void tipoDesconto(String tipoDesconto) {
-        this.tipoDesconto = tipoDesconto;
-    }
-
-    private double descontoPercentual(double percentual) {
-        return percentual > 0.19 ? Desconto.descontoProgressivo : percentual;
     }
 
     @Override
